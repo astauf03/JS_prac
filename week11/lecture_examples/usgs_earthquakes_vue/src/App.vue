@@ -41,16 +41,19 @@ function handleFilterUpdate(newFilters) {
     <div class="sidebar-layout">
       <aside class="sidebar">
         <!-- TODO (Live Code Break #1): Pass :filters, :count, and listen for @update:filters -->
-        <EarthquakeControls
-          :filters="filters"
-          :count="filteredEarthquakes.length"
-          @update:filters="handleFilterUpdate"
-        />
+        <EarthquakeControls />
+        <!-- :filters="filters" -->
+        <!-- :count="filteredEarthquakes.length" -->
+        <!-- @update:filters="handleFilterUpdate" -->
+
         <!-- TODO (Live Code Break #2): Pass :binned-data to EarthquakeChart -->
-        <EarthquakeChart :binned-data="binnedData" />
+        <EarthquakeChart />
+        <!-- :binned-data="binnedData" -->
       </aside>
+
       <!-- TODO (Live Code Break #3): Pass :earthquakes to EarthquakeMap -->
-      <EarthquakeMap :earthquakes="filteredEarthquakes" />
+      <EarthquakeMap />
+      <!-- :earthquakes="filteredEarthquakes" -->
     </div>
   </main>
   <footer>

@@ -65,7 +65,7 @@ onMounted(() => {
 });
 
 watch(
-  () => props.earthquakes,
+  props.earthquakes,
   (newEarthquakes) => {
     renderMarkers(newEarthquakes);
   },

@@ -19,7 +19,7 @@ const minDepth = ref(props.filters.minDepth ?? 0);
 const maxDepth = ref(props.filters.maxDepth ?? 700);
 
 watch(
-  () => props.filters,
+  props.filters,
   (newFilters) => {
     if (newFilters) {
       minMag.value = newFilters.minMag ?? 0;

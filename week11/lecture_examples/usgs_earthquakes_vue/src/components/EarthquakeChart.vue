@@ -5,15 +5,15 @@ import 'billboard.js/dist/billboard.css';
 import * as d3 from 'd3';
 
 // TODO (Live Code Break #2): Declare props for binnedData
-const props = defineProps({
-  binnedData: {
-    type: Object,
-    default: () => ({ depths: [], magnitudes: [], counts: [], maxCount: 0 }),
-  },
-});
+// const props = defineProps({
+//   binnedData: {
+//     type: Object,
+//     default: () => ({ depths: [], magnitudes: [], counts: [], maxCount: 0 }),
+//   },
+// });
 
 // TODO (Live Code Break #2): Create template ref for the chart container element
-const chartContainer = ref(null);
+// const chartContainer = ref(null);
 let chartInstance = null;
 let currentCounts = [];
 
@@ -46,47 +46,47 @@ function buildChartData(binnedData) {
 
 onMounted(() => {
   // TODO (Live Code Break #2): Initialize bb.generate() with bindto: chartContainer.value
-  if (!chartContainer.value) return;
+  // if (!chartContainer.value) return;
 
-  chartInstance = bb.generate({
-    bindto: chartContainer.value,
-    data: buildChartData(props.binnedData),
-    point: {
-      type: 'rectangle',
-      r: 6,
-    },
-    transition: {
-      duration: null,
-    },
-    axis: {
-      x: {
-        label: 'Depth (km)',
-        tick: { fit: false },
-      },
-      y: {
-        label: 'Magnitude',
-      },
-    },
-    legend: { show: false },
-  });
+  // chartInstance = bb.generate({
+  //   bindto: chartContainer.value,
+  //   data: buildChartData(props.binnedData),
+  //   point: {
+  //     type: 'rectangle',
+  //     r: 6,
+  //   },
+  //   transition: {
+  //     duration: null,
+  //   },
+  //   axis: {
+  //     x: {
+  //       label: 'Depth (km)',
+  //       tick: { fit: false },
+  //     },
+  //     y: {
+  //       label: 'Magnitude',
+  //     },
+  //   },
+  //   legend: { show: false },
+  // });
 });
 
 // TODO (Live Code Break #2): Watch () => props.binnedData and call chartInstance.load(...)
-watch(
-  () => props.binnedData,
-  (newBinnedData) => {
-    if (chartInstance) {
-      chartInstance.load(buildChartData(newBinnedData));
-    }
-  },
-);
+// watch(
+//   props.binnedData,
+//   (newBinnedData) => {
+//     if (chartInstance) {
+//       chartInstance.load(buildChartData(newBinnedData));
+//     }
+//   },
+// );
 
 onBeforeUnmount(() => {
   // TODO (Live Code Break #2): Clean up chartInstance with chartInstance.destroy()
-  if (chartInstance) {
-    chartInstance.destroy();
-    chartInstance = null;
-  }
+  // if (chartInstance) {
+  //   chartInstance.destroy();
+  //   chartInstance = null;
+  // }
 });
 </script>
 
@@ -94,6 +94,7 @@ onBeforeUnmount(() => {
   <section class="chart-section">
     <h3>Magnitude vs. Depth Heatmap</h3>
     <!-- TODO (Live Code Break #2): Attach ref="chartContainer" -->
-    <div id="earthquake-chart" ref="chartContainer"></div>
+    <div id="earthquake-chart"></div>
+    <!-- ref="chartContainer" -->
   </section>
 </template>

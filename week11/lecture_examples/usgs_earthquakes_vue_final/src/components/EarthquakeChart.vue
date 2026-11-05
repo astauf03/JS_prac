@@ -82,7 +82,7 @@ onMounted(() => {
 });
 
 watch(
-  () => props.binnedData,
+  props.binnedData,
   (newBinnedData) => {
     if (chartInstance) {
       chartInstance.load(buildChartData(newBinnedData));

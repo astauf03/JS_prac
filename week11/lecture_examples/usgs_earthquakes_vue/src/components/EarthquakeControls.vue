@@ -2,26 +2,26 @@
 import { ref, watch } from 'vue';
 
 // TODO (Live Code Break #1): Define props for filters and count
-const props = defineProps({
-  filters: {
-    type: Object,
-    default: () => ({ minMag: 0, minDepth: 0, maxDepth: 700 }),
-  },
-  count: {
-    type: Number,
-    default: 0,
-  },
-});
+// const props = defineProps({
+//   filters: {
+//     type: Object,
+//     default: () => ({ minMag: 0, minDepth: 0, maxDepth: 700 }),
+//   },
+//   count: {
+//     type: Number,
+//     default: 0,
+//   },
+// });
 
 // TODO (Live Code Break #1): Define emits for updating filters
-const emit = defineEmits(['update:filters']);
+// const emit = defineEmits(['update:filters']);
 
 const minMag = ref(props.filters.minMag ?? 0);
 const minDepth = ref(props.filters.minDepth ?? 0);
 const maxDepth = ref(props.filters.maxDepth ?? 700);
 
 watch(
-  () => props.filters,
+  props.filters,
   (newFilters) => {
     if (newFilters) {
       minMag.value = newFilters.minMag ?? 0;
@@ -33,27 +33,27 @@ watch(
 );
 
 // TODO (Live Code Break #1): Implement emitFilter and slider constraint handlers
-function emitFilter() {
-  emit('update:filters', {
-    minMag: minMag.value,
-    minDepth: minDepth.value,
-    maxDepth: maxDepth.value,
-  });
-}
+// function emitFilter() {
+//   emit('update:filters', {
+//     minMag: minMag.value,
+//     minDepth: minDepth.value,
+//     maxDepth: maxDepth.value,
+//   });
+// }
 
-function handleMinDepth() {
-  if (minDepth.value > maxDepth.value) {
-    maxDepth.value = minDepth.value;
-  }
-  emitFilter();
-}
+// function handleMinDepth() {
+//   if (minDepth.value > maxDepth.value) {
+//     maxDepth.value = minDepth.value;
+//   }
+//   emitFilter();
+// }
 
-function handleMaxDepth() {
-  if (maxDepth.value < minDepth.value) {
-    minDepth.value = maxDepth.value;
-  }
-  emitFilter();
-}
+// function handleMaxDepth() {
+//   if (maxDepth.value < minDepth.value) {
+//     minDepth.value = maxDepth.value;
+//   }
+//   emitFilter();
+// }
 </script>
 
 <template>
@@ -72,9 +72,9 @@ function handleMaxDepth() {
         min="0"
         max="10"
         step="0.5"
-        v-model.number="minMag"
-        @input="emitFilter"
       />
+      <!-- v-model.number="minMag" -->
+      <!-- @input="emitFilter" -->
     </div>
 
     <div class="form-group">
@@ -89,9 +89,9 @@ function handleMaxDepth() {
         min="0"
         max="700"
         step="10"
-        v-model.number="minDepth"
-        @input="handleMinDepth"
       />
+      <!-- v-model.number="minDepth" -->
+      <!-- @input="handleMinDepth" -->
     </div>
 
     <div class="form-group">
@@ -106,9 +106,9 @@ function handleMaxDepth() {
         min="0"
         max="700"
         step="10"
-        v-model.number="maxDepth"
-        @input="handleMaxDepth"
       />
+      <!-- v-model.number="maxDepth" -->
+      <!-- @input="handleMaxDepth" -->
     </div>
 
     <div class="count-display">

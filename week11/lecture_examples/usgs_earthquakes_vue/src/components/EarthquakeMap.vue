@@ -4,15 +4,15 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 // TODO (Live Code Break #3): Declare props for earthquakes array
-const props = defineProps({
-  earthquakes: {
-    type: Array,
-    default: () => [],
-  },
-});
+// const props = defineProps({
+//   earthquakes: {
+//     type: Array,
+//     default: () => [],
+//   },
+// });
 
 // TODO (Live Code Break #3): Create template ref for map container
-const mapContainer = ref(null);
+// const mapContainer = ref(null);
 let mapInstance = null;
 let markerLayer = null;
 
@@ -55,38 +55,39 @@ function renderMarkers(earthquakes = []) {
 
 onMounted(() => {
   // TODO (Live Code Break #3): Initialize Leaflet map, base tile layer, and layerGroup
-  if (!mapContainer.value) return;
+  // if (!mapContainer.value) return;
 
-  mapInstance = L.map(mapContainer.value).setView([20, 0], 2);
+  // mapInstance = L.map(mapContainer.value).setView([20, 0], 2);
 
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-  }).addTo(mapInstance);
+  // L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  //   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  // }).addTo(mapInstance);
 
-  markerLayer = L.layerGroup().addTo(mapInstance);
-  renderMarkers(props.earthquakes);
+  // markerLayer = L.layerGroup().addTo(mapInstance);
+  // renderMarkers(props.earthquakes);
 });
 
 // TODO (Live Code Break #3): Watch () => props.earthquakes and call renderMarkers
-watch(
-  () => props.earthquakes,
-  (newEarthquakes) => {
-    renderMarkers(newEarthquakes);
-  },
-);
+// watch(
+//   props.earthquakes,
+//   (newEarthquakes) => {
+//     renderMarkers(newEarthquakes);
+//   },
+// );
 
 onBeforeUnmount(() => {
   // TODO (Live Code Break #3): Clean up mapInstance with mapInstance.remove()
-  if (mapInstance) {
-    mapInstance.remove();
-    mapInstance = null;
-  }
+  // if (mapInstance) {
+  //   mapInstance.remove();
+  //   mapInstance = null;
+  // }
 });
 </script>
 
 <template>
   <section class="map-section">
     <!-- TODO (Live Code Break #3): Attach ref="mapContainer" -->
-    <div id="map" ref="mapContainer" class="map visualization-container"></div>
+    <div id="map" class="map visualization-container"></div>
+    <!-- ref="mapContainer" -->
   </section>
 </template>
